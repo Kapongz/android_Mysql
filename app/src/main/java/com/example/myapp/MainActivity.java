@@ -2,51 +2,35 @@ package com.example.myapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import java.sql.*;
 
 public class MainActivity extends AppCompatActivity {
-TextView tv;
+
+Button btok,btshow;
 Connection c;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tv=findViewById(R.id.tv);
-        new mytask().execute("");
+//        tv=findViewById(R.id.tv);
+        btok = findViewById(R.id.save);
+        btshow = findViewById(R.id.show);
 
-    }
-    private class mytask extends AsyncTask<String,String,String>{
-        String msg="";
 
-        @Override
-        protected void onPreExecute() {
-            tv.setText("Please waiting to connect");
-        }
-
-        @Override
-        protected String doInBackground(String... strings) {
-            try {
-                c=DBConnect.getConnect();
-                if(c!=null){
-                    msg = "Connect Success";
-
-                }else if(c==null){
-                    msg="fail";
-
-                }
-
-            }catch (Exception ex){
-                msg="Not Connect";
+        btok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,Save_data.class);
+                startActivity(intent);
             }
-            return msg;
-        }
+        });
 
-        @Override
-        protected void onPostExecute(String s) {
-            tv.setText(s);
-        }
     }
+
 }
