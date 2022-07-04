@@ -30,6 +30,13 @@ Connection c;
                 startActivity(intent);
             }
         });
+        btshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent n = new Intent(MainActivity.this,Show_data.class);
+                startActivity(n);
+            }
+        });
 
     }
 

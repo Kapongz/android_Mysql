@@ -72,8 +72,13 @@ public class Save_data extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-            super.onPostExecute(s);
+
             txtshowcon.setText(s);
+            txtname.setText("");
+            txtsurname.setText("");
+            txttel.setText("");
+            txtname.requestFocus();
+
 
         }
     }

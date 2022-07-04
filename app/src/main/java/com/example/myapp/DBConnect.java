@@ -7,7 +7,7 @@ public class DBConnect {
             Class.forName("com.mysql.jdbc.Driver");
             String user ="pongkst";
             String pwd="96316032";
-            String url="jdbc:mysql://172.20.10.3:3306/cw2";//ip wifi
+            String url="jdbc:mysql://172.20.10.3:3306/cw2?characterEncoding=utf8";//ip wifi
             Connection c = DriverManager.getConnection(url,user,pwd);
             return c;
 
