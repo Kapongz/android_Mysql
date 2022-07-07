@@ -18,6 +18,7 @@ Connection c;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle("MySQL");
 //        tv=findViewById(R.id.tv);
         btok = findViewById(R.id.save);
         btshow = findViewById(R.id.show);

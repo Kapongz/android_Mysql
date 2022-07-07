@@ -50,10 +50,11 @@ public class ModelCW implements ActionDB {
         return rs;
     }
 
+
     public ResultSet SelectDataById() throws Exception{
-        String sql="select * from users where id=?";
+        String sql="SELECT * FROM users WHERE id=?";
         PreparedStatement stm = c.prepareStatement(sql);
-        stm.setString(1,id);
+        stm.setString(1, id);
         ResultSet rs=stm.executeQuery();
         return rs;
     }

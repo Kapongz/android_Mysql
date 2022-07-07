@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.*;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Save_data extends AppCompatActivity {
     EditText txtname,txtsurname,txttel;
@@ -27,10 +31,29 @@ public class Save_data extends AppCompatActivity {
         txtshowcon = findViewById(R.id.txtcon);
         btnok = findViewById(R.id.ok);
         btncancle = findViewById(R.id.cancle);
+        getSupportActionBar().setTitle("SAVE");
         btnok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new myData().execute("");
+
+
+                if(TextUtils.isEmpty(txtname.getText().toString()) && TextUtils.isEmpty(txtsurname.getText().toString()) && TextUtils.isEmpty(txttel.getText().toString()) ){
+                    Toast toast = Toast.makeText(getApplicationContext(), "ກະລຸນາໃສ່ຂໍ້ມູນ", Toast.LENGTH_LONG);
+                    toast.show();
+
+                }else {
+                    new myData().execute("");
+                }
+
+            }
+        });
+        btncancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtname.setText("");
+                txtsurname.setText("");
+                txttel.setText("");
+                txtname.requestFocus();
             }
         });
     }
@@ -40,9 +63,12 @@ public class Save_data extends AppCompatActivity {
         String surname = txtsurname.getText().toString();
         String tel = txttel.getText().toString();
 
+
         @Override
         protected void onPreExecute() {
-            txtshowcon.setText("Please wait connecting.....");
+
+            //txtshowcon.setText("ກະລຸນາລໍຖ້າການເຊື່ອຕໍ່.....");
+            super.onPreExecute();
         }
 
         @Override
@@ -56,14 +82,15 @@ public class Save_data extends AppCompatActivity {
                 f.setTel(tel);
                 int r = f.InsertData();
                 if(r>0){
-                    msg="Insert data complate";
+                    msg="ບັນທຶກສຳເລັດແລ້ວ!";
                 } else {
-                    msg = "Can not Save Data";
+                    msg = "ບໍ່ສາມາດບັນທຶກໄດ້";
 
                 }
 
+
             }catch (Exception ex){
-                msg = "Fail....";
+                msg = "ບໍ່ສາມາດເຊື່ອຕໍ່ໄດ້";
 
             }
             return msg;
@@ -73,11 +100,16 @@ public class Save_data extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
 
-            txtshowcon.setText(s);
+//            txtshowcon.setText(s);
             txtname.setText("");
             txtsurname.setText("");
             txttel.setText("");
             txtname.requestFocus();
+            new SweetAlertDialog(Save_data.this)
+                    .setTitleText(s)
+                    .show();
+
+
 
 
         }

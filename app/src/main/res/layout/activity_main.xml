@@ -1,44 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:orientation="vertical"
-    android:gravity="center"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_layout"
     tools:context=".MainActivity">
 
-<!--    <TextView-->
-<!--        android:id="@+id/tv"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Hello World!"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="273dp"
+        android:src="@drawable/mysql" />
+
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center"
         android:layout_margin="25dp"
         android:padding="30dp"
-        android:background="@color/purple_200"
+        android:background="@drawable/bg_in_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:textAllCaps="false"
-            android:text="SAVE"
+            android:text="ບັນທຶກ"
+            android:textColor="@color/white"
+            android:fontFamily="@font/notosans"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:background="@drawable/btn_save"
             android:layout_margin="10dp"
             android:layout_height="wrap_content"/>
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/show"
             android:layout_width="match_parent"
             android:textAllCaps="false"
-            android:text="SHOW"
+            android:text="ສະແດງ"
+            android:textColor="@color/white"
+            android:fontFamily="@font/notosans"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:background="@drawable/btn_show"
             android:layout_margin="10dp"
             android:layout_height="wrap_content"/>
     </LinearLayout>
